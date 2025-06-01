@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sorpresa</title>
+  <style>
+    body {
+  position: relative; /* Necesario para que los hijos absolutos se anclen aquí */
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(to right, #fce4ec, #f8bbd0);
+  font-family: 'Segoe UI', sans-serif;
+  display: flex;
+  align-items: center;
+  height: 100vh;
+  flex-direction: column;
+}
+
+/* Estilo general para ambos contenedores de borde */
+.border-container {
+  position: absolute;
+  top: 80%;
+  transform: translateY(-50%); /* Centra verticalmente el conjunto de 3 imágenes */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 50px;          /* Espacio entre cada imagen */
+  z-index: 10;        /* Que quede por encima del contenido principal */
+}
+
+/* Ajustes específicos para el contenedor izquierdo */
+.border-container.left {
+  left: 0;            /* Pega todo el bloque al borde izquierdo */
+}
+
+/* Ajustes específicos para el contenedor derecho */
+.border-container.right {
+  right: 0;           /* Pega todo el bloque al borde derecho */
+}
+
+/* Estilo para cada <img> dentro de los contenedores */
+.border-container img {
+  width: 200px;        /* Ajusta el ancho a lo que necesites */
+  height: auto;       /* Que mantenga la proporción original */
+  /* Si quieres redondear bordes, por ejemplo:
+  border-radius: 8px; 
+  */
+}
+
+    /* Contenedor del reproductor para centrarlo */
+    .audio-container {
+      margin-top: 20px; /* Pequeño espacio superior para que no quede pegado al borde */
+    }
+
+    audio {
+      width: 300px; /* Ajusta el ancho del reproductor a tu gusto */
+      outline: none;
+    }
+
+    .palabras {
+      background: white;
+      padding: 1rem;
+      border-radius: 20px;
+      box-shadow: 0 0 20px rgba(143, 46, 130, 0.452);
+      text-align: center;
+      max-width: 850px;
+      transition: all 0.3s ease;
+      margin-top: 80px; /* Empuja el texto hacia abajo para que se note el reproductor arriba */
+    }
+
+    .container {
+      background: white;
+      padding: 2rem;
+      border-radius: 20px;
+      box-shadow: 0 0 20px rgba(143, 46, 130, 0.452);
+      text-align: center;
+      max-width: 400px;
+      transition: all 0.3s ease;
+    }
+
+    h1 {
+      color: #c2185b;
+      margin-bottom: 1rem;
+    }
+
+    .button {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 1.5rem;
+    }
+
+    button {
+      background: linear-gradient(to right, #eb5a8a, #a99ba0);
+      border: none;
+      padding: 0.8rem 1.5rem;
+      border-radius: 30px;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    button:hover {
+      background: linear-gradient(to right, #4d0821, #ee6d9a);
+      background: #c2185b;
+    }
+
+    .mensaje {
+      margin-top: 20px;
+      color: #6a1b9a;
+      font-size: 1.1rem;
+    }
+
+    .ticket {
+      background: #fff3f6;
+      padding: 2rem;
+      border-radius: 20px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+      text-align: center;
+      animation: fadeIn 1s ease forwards;
+      display: none;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: scale(0.95);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Contenedor izquierdo: aquí van 3 imágenes apiladas -->
+  <div class="border-container left">
+    <img src="sonic 1.jpg" alt="Deco izquierda 1">
+    <img src="cf83e027f83f222b0f272a7adfa1a1c8.jpg" alt="Deco izquierda 2">
+    <img src="c74f60ed6b6fb50a96dee5b8ca143516.jpg" alt="Deco izquierda 3">
+  </div>
+
+  <!-- Contenedor derecho: aquí van 3 imágenes apiladas -->
+  <div class="border-container right">
+    <img src="b860dfbd14712e9c622be0e6bfbe50a3.jpg" alt="Deco derecha 1">
+    <img src="a631523db7b5a2728ded172b0869bd59.jpg" alt="Deco derecha 2">
+    <img src="7f9bb9695aaff9323b17a7084cd46801.jpg" alt="Deco derecha 3">
+  </div>
+  <!-- Contenedor para centrar y dar espacio al reproductor -->
+  <div class="audio-container">
+    <audio id="bg-audio" controls loop>
+      <source src="My Kind of Woman (Instrumental).mp3" type="audio/mp3" />
+      Tu navegador no soporta audio HTML5.
+    </audio>
+  </div>
+
+  <!-- Bloque de texto empujado hacia abajo con margin-top -->
+  <div class="palabras" id="palabras">
+    <p>
+      Holaaaaaaaaaaaa uu jajaja, hace muchooooo tiempo quería dedicarte algo que
+      pueda hacer con mis propias manos, pero como sabes la U y el trabajo quitan
+      tiempito :c. Jaja, aún recuerdo el dibujito que te hice, jaja. Pero bueno,
+      jaja, aún recuerdo la primera vez que te vi en ese cortamonte: tenías tu
+      pelo corto jaja todo lindo, y desde ese momento me llamaste la atención. 
+      Pero como soy un tímido de asdawd jaja, no tuve el valor ni siquiera de 
+      dirigirte la palabra. Pasó tiempo, jaja, hasta que por obra del destino
+      coincidimos en el Paradise xd. Ese día no sabía qué hacer: estaba ansioso,
+      con un poco de miedo de malograrla jaja. Quizás no soy un chico perfecto,
+      lindo, “gilero” jaja. Quizás tuve oportunidades para expresarte lo que
+      siento, pero el temor de ser rechazado me invadía. 
+      <br /><br />
+      Al verte no sé qué me pasa: mi mente queda en blanco y solo pienso en ti y
+      en esos ojitos tan lindos que tienes. Tu forma tan sincera y bonita de
+      hablar me hace sentir anonadado. Jaja, el día que te escuché gritarme me
+      quedé impactado, jajaja; supe ese día que tenías un carácter fuerte, pero a
+      la vez gentil; una chica tranquila, una chica que siempre está alegre, con
+      esa sonrisa risueña tan linda. Eres una chica verdaderamente maravillosa,
+      alguien con quien disfruto cada instante, desde las risas compartidas hasta
+      los silencios cómplices. Jsjs, me encanta la manera en que te expresas: esa
+      confianza serena que transmites sin esfuerzo; la forma en que nombras tus
+      emociones y enfrentas todo con una mirada tan única que, incluso en los
+      días más grises, encuentra belleza. Esos ojitos que tienes, ¡dios mío! 
+      <br /><br />
+      Admiro cómo, a pesar de las dificultades, sigues de pie, luchando contra
+      las adversidades que intentan frenarte, pero no lo logran: sigues adelante
+      día tras día con una fuerza inquebrantable. Aun cuando tú misma mencionas
+      que tienes defectos, yo veo cualidades que te hacen única: la dulzura de
+      tu risa, tu acento peculiar que susurra historias de autenticidad. Adoro tu
+      presencia en mi vida, esa luz que irradias y que ha iluminado mis días más
+      oscuros; esa risa tan auténtica y verdadera que, a pesar de que me dijiste
+      que no te gustaba, a mí me encanta jajaja. 
+      <br /><br />
+      Quizás últimamente te siento más distante, más fría; quizás ya te
+      aburriste de mí jaja, pero solo quería expresar lo que mi corazón calló
+      todo este tiempo. Tal vez me dejes de hablar algún día como ya lo hiciste
+      jajaj, pero quiero que sepas que siempre puedes contar conmigo, y cuando
+      necesites a alguien, créeme que siempre estaré ahí para ti. Tú ya sabes lo
+      que siento por ti, aunque quizás mis acciones nunca lo demostraron. Mi
+      corazón siempre calló lo que mi mente habló, pero bueno jaja… No sabemos
+      lo que nos deparará el destino: quizás sigamos juntos, quizás nos
+      volvamos unos desconocidos (ojalá no ;c). Pero quiero que sepas que siempre
+      serás “My King of Woman ❤️💕” jaja. Sin más nada que decir, siempre que me lo
+      permitas quiero pasar tiempo contigo uu: saliendo, ir a comer ramen, tomar
+      soju o un calentito jajaja, o hacer mil cosas sin temor al qué dirán.
+    </p>
+  </div>
+
+  <!-- Bloque de “¿Quieres salir conmigo?” -->
+  <div class="container" id="declaración">
+    <h1>¿Quieres salir mañana ;3?</h1>
+    <div class="button">
+      <button onclick="Si()">Sí ❤️</button>
+      <button onclick="No()">No 😢</button>
+    </div>
+    <div class="mensaje" id="mensaje"></div>
+  </div>
+
+  <!-- Ticket que aparece si la chica acepta -->
+  <div class="ticket" id="ticket">
+    <h1>Cita confirmada</h1>
+    <p>Prepárate para pasarla bien ;3</p>
+    <p><strong>HORA</strong>: 5:25 PM</p>
+    <p><strong>LUGAR</strong>: Open Plaza para ir al cine uu</p>
+    <p><strong>No faltes uu</strong></p>
+  </div>
+
+  <script>
+    // Intentar reproducir el audio con volumen apenas haya un clic, por políticas de Autoplay
+    window.addEventListener('load', () => {
+      const audio = document.getElementById('bg-audio');
+      const playPromise = audio.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(_ => {
+          document.addEventListener(
+            'click',
+            () => {
+              audio.muted = false;
+              audio.play().catch(() => {});
+            },
+            { once: true }
+          );
+        });
+      }
+    });
+
+    let contador = 0;
+    const declaración = document.getElementById('declaración');
+    const ticket = document.getElementById('ticket');
+    const mensaje = document.getElementById('mensaje');
+
+    function Si() {
+      declaración.style.display = 'none';
+      ticket.style.display = 'block';
+    }
+
+    function No() {
+      contador++;
+      const respuestas = [
+        'por que no 🥺',
+        'Ya, dime que sí 🥺',
+        'di que siiiiiiiiiiiii’ 🌧️',
+        'Piénsalo bien, iremos a tomas soju tambien jajaj',
+        'Por que noooooo ;c'
+      ];
+      mensaje.textContent = respuestas[Math.min(contador, respuestas.length - 1)];
+    }
+  </script>
+</body>
+</html>
